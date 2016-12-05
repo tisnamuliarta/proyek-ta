@@ -3,7 +3,7 @@
   <nav class="sidebar-nav">
       <ul class="nav">
           <li class="nav-item">
-              <a class="nav-link" href="index.html"><i class="icon-speedometer"></i> Dashboard <span class="tag tag-info">NEW</span></a>
+              <a class="nav-link" href="<?php echo site_url('su/dashboard'); ?>"><i class="icon-speedometer"></i> Dashboard <span class="tag tag-info">NEW</span></a>
           </li>
 
           <li class="nav-title">

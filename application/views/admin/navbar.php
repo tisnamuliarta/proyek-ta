@@ -29,7 +29,7 @@
           </li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                  <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                  <img src="<?php echo base_url('admin/img/avatars/6.jpg'); ?>" class="img-avatar" alt="admin@bootstrapmaster.com">
                   <span class="hidden-md-down">admin</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
@@ -53,7 +53,7 @@
                   <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span class="tag tag-primary">42</span></a>
                   <div class="divider"></div>
                   <a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock Account</a>
-                  <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+                  <a class="dropdown-item" href="<?php echo site_url('su/logout'); ?>"><i class="fa fa-lock"></i> Logout</a>
               </div>
           </li>
           <li class="nav-item">

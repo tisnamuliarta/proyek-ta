@@ -40,16 +40,16 @@
     <?php echo $footer; ?>
 
     <!-- Bootstrap and necessary plugins -->
-    <script src="<?php echo base_url('bower_components/jquery/dist/jquery.min.js'); ?> "></script>
-    <script src="<?php echo base_url('bower_components/tether/dist/js/tether.min.js'); ?>"></script>
-    <script src="<?php echo base_url('bower_components/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
-    <script src="<?php echo base_url('bower_components/pace/pace.min.js'); ?>"></script>
+    <script src="<?php echo base_url('admin/bower_components/jquery/dist/jquery.min.js'); ?> "></script>
+    <script src="<?php echo base_url('admin/bower_components/tether/dist/js/tether.min.js'); ?>"></script>
+    <script src="<?php echo base_url('admin/bower_components/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
+    <script src="<?php echo base_url('admin/bower_components/pace/pace.min.js'); ?>"></script>
     <!-- Plugins and scripts required by all views -->
-    <script src="<?php echo base_url('bower_components/chart.js/dist/Chart.min.js'); ?>"></script>
+    <script src="<?php echo base_url('admin/bower_components/chart.js/dist/Chart.min.js'); ?>"></script>
     <!-- GenesisUI main scripts -->
-    <script src="<?php echo base_url('js/app.js'); ?>"></script>
+    <script src="<?php echo base_url('admin/js/app.js'); ?>"></script>
     <!-- Plugins and scripts required by this views -->
     <!-- Custom scripts required by this view -->
-    <script src="<?php echo base_url('js/views/main.js'); ?>"></script>
+    <script src="<?php echo base_url('admin/js/views/main.js'); ?>"></script>
   </body>
 </html>

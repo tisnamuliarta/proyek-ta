@@ -1,5 +1,4 @@
 <?php
-<?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
@@ -9,7 +8,7 @@ class Admin_template
 {
   protected $CI;
 
-  public fuction __construct()
+  public function __construct()
   {
     $this->CI =& get_instance();
   }
