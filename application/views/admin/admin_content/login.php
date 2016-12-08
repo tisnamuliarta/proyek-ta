@@ -39,7 +39,7 @@
                                   $attribute = array('name' => 'LoginForm');
                                   echo form_open('auth_su/login', $attribute); ?>
                                     <div class="input-group mb-1">
-                                        <span class="input-group-addon"><i class="icon-user"></i>
+                                        <span class="input-'/1rgroup-addon"><i class="icon-user"></i>
                                         </span>
                                         <input type="text" name="username" value="<?php echo set_value('username'); ?>" class="form-control" placeholder="Username">
 

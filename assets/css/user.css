@@ -1,0 +1,69 @@
+/*html,
+  body,
+  .view {
+      height: 100vh;
+      margin-bottom: 20px;
+  }*/
+
+  .form-control {
+    color: white;
+  }
+
+.view {
+    min-width: 100%;
+    min-height: 100vh;
+}
+
+.view {
+    background: url("../img/Ariel.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+ .card {
+     margin: 3rem 0;
+     background-color: rgba(255, 255, 255, 0.8);
+     padding: 30px;
+     color: black!important;
+ }
+ .card-link {
+     font-size: 19px;
+ }
+
+ .card-link.active {
+     padding-bottom: 3px;
+     border-bottom: 2px solid #0d47a1;
+ }
+ h5 {
+     margin-top: 1rem;
+ }
+/*input[type="text"]:focus:not([readonly]) {
+	border-color:#0d47a1;
+	box-shadow:0 1px 0 0 #0d47a1;
+	color:#fff;
+}
+
+input[type="text"]:not([readonly])+label {
+	color:#fff;
+}
+
+input[type="text"]:focus:not([readonly])+label {
+	color:#fff;
+}
+input[type="email"]:not([readonly])+label {
+	color:#fff;
+}
+
+input[type="email"]:focus:not([readonly])+label {
+	color:#fff;
+}
+input[type="password"]:not([readonly])+label {
+	color:#fff;
+}
+
+input[type="password"]:focus:not([readonly])+label {
+	color:#fff;
+}
+*/

@@ -1,4 +1,11 @@
-RewriteEngine On
+Options +FollowSymLinks
+RewriteEngine on
+RewriteBase /
+
+# -- Add this rule ---
+RewriteCond %{REQUEST_URI} ^/([a-zA-Z0-9_-]+)$
+RewriteRule ^(.*)$ index.php/member/show/$1 [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]

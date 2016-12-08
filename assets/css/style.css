@@ -2,8 +2,33 @@
  /* TEMPLATE STYLES */
         
 main {
-    margin-top: 3rem;
+    margin-top: 5rem;
 }
+
+.float-xs-left, .breadcrumb-dn {
+	float: left!important;
+}
+
+.brand {
+	position: relative;
+	float: left;
+  margin-bottom: 0.25rem;
+  margin-left: 1rem;
+  font-size: 1.25rem;
+}
+.button-collapse{
+	float: left;
+}
+
+@media screen and (max-width : 990px) {
+	.brand {
+		top: 0;	
+		left: 50%;
+	}
+}
+
+
+
 
 main .card {
     margin-bottom: 2rem;
@@ -13,4 +38,13 @@ main .card {
     .read-more {
         text-align: center;
     }
+}
+
+.navbar {
+    position: relative;
+    padding: 0.8rem!important;
+}
+
+.navbar-fixed-bottom, .navbar-fixed-top {
+    position: fixed!important;
 }
