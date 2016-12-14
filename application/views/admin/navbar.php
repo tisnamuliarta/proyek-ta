@@ -30,7 +30,7 @@
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                   <img src="<?php echo base_url('admin/img/avatars/6.jpg'); ?>" class="img-avatar" alt="admin@bootstrapmaster.com">
-                  <span class="hidden-md-down">admin</span>
+                  <span class="hidden-md-down">hello, <?php echo $this->session->userdata['uname'] ?></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
 

@@ -30,7 +30,7 @@
                           <label for="full-name" class="">Full Name</label>
                       </div>
                       <div class="md-form m-t-3 form-group">
-                          <input type="email" id="email" name="email" class="form-control white-text">
+                          <input type="email" id="email" name="email" class="form-control ">
                           <label for="email" class="">Your Email</label>
                       </div>
                       <div class="md-form m-t-3 form-group">
@@ -38,16 +38,16 @@
                           <label for="username" class="">Username</label>
                       </div>
                       <div class="md-form m-t-3 form-group">
-                          <input type="password" id="password" name="password" class="form-control white-text">
+                          <input type="password" id="password" name="password" class="form-control ">
                           <label for="password" class="">Password</label>
                       </div>
                       <div class="md-form m-t-3 form-group">
-                          <input type="password" id="repassword" name="repassword" class="form-control white-text">
+                          <input type="password" id="repassword" name="repassword" class="form-control ">
                           <label for="repassword" class="">Confirm Password</label>
                       </div>
 
                       <div class="text-xs-center">
-                          <button type="submit" name="submit" class="btn btn-indigo">REGISTER</button>
+                          <button type="submit" name="submit" class="btn btn-primary">REGISTER</button>
                       </div>
                     <?php echo form_close(); ?>
 

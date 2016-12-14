@@ -1,9 +1,9 @@
 <div class="container">
 	<div class="row m-b-r m-t-3">
-		<div class="col-md-3 offset-md-1 col-sm-4 col-xs-5">
-			<img src="<?php echo base_url('assets/profile/'.$member['avatar']) ?>" alt="" class="img-circle img-fluid">
+		<div class="col-md-2 offset-md-1 col-sm-4 col-xs-6">
+			<img src="<?php echo base_url('profile/'.$member['avatar']) ?>" alt="" class="img-circle img-fluid">
 		</div>
-		<div class="col-md-8 p-t-2 col-sm-12 col-xs-7">
+		<div class="col-md-8 p-t-2 col-sm-12 col-xs-6">
 			<h2 class="h2-responsive"><?php print $member['username'] ?> <button type="button" class="btn btn-info-outline waves-effect">Follow</button></h2>
 			<p>Jane Doe</p>
 

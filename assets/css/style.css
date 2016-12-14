@@ -1,6 +1,6 @@
 /* YOUR CUSTOM STYLES */
  /* TEMPLATE STYLES */
-        
+
 main {
     margin-top: 5rem;
 }
@@ -20,10 +20,16 @@ main {
 	float: left;
 }
 
-@media screen and (max-width : 990px) {
+@media screen and (max-width : 550px) {
 	.brand {
-		top: 0;	
-		left: 50%;
+		left: 30%!important;
+	}
+}
+
+@media screen and (max-width : 900px) {
+	.brand {
+		top: 0;
+		left: 40%;
 	}
 }
 
@@ -47,4 +53,57 @@ main .card {
 
 .navbar-fixed-bottom, .navbar-fixed-top {
     position: fixed!important;
+}
+
+.form-search-nav {
+  height: 1rem!important;
+  background-color: rgba(0,0,0,0.15)!important;
+  padding: 18px 0 18px 8% ;
+  border-radius: 2px;
+  width: 450px!important;
+  text-align: center;
+  left: 0;
+  border: none;
+}
+
+.form-search-nav:active {
+  color: white;
+}
+
+.text-center {
+  text-align: center!important;
+}
+
+.form-search {
+  right: 20%;
+  display: table-cell;
+}
+
+.icon-search {
+  position: absolute;
+  left: 2%;
+  padding-top: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .form-search {
+    right: 10%;
+  }
+}
+
+
+
+input[type="text"]:focus:not([readonly]), input[type="email"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), input[type="number"]:focus:not([readonly]) {
+	border-color:#0d47a1;
+	box-shadow:0 1px 0 0 #0d47a1;
+	color:black;
+  background-color: transparent;
+}
+
+input[type="text"]:not([readonly])+label, input[type="email"]:not([readonly])+label, input[type="password"]:not([readonly])+label {
+	color:black;
+}
+
+input[type="text"]:focus:not([readonly])+label, input[type="email"]:focus:not([readonly])+label, input[type="password"]:focus:not([readonly])+label {
+	color: rgba(0,0,0,0.5);
 }

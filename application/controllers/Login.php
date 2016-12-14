@@ -13,7 +13,7 @@ class Login extends CI_Controller
     $this->load->library(array('form_validation','session'));
 
     if($this->session->userdata('id')){
-            redirect('/');
+      redirect('/');
     }
   }
   /**
@@ -50,17 +50,17 @@ class Login extends CI_Controller
       if ($login) {
         $this->load->library('session');
         $newdata = array(
-          'id'  => $login,
+          'id'  => $login['id'],
+          'username' => $login['username'],
           'logged_in' => TRUE
         );
 
         $this->session->set_userdata($newdata);
-
         $validator['success'] = true;
-        $validator['messages'] = '/'; 
+        $validator['messages'] = '/';
       }else {
         $validator['success'] = false;
-        $validator['messages'] = 'Incorent username/password combination';  
+        $validator['messages'] = 'Incorent username/password combination';
       }
 
       // redirect('register');

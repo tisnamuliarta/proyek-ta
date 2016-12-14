@@ -14,14 +14,14 @@
       <div class="container">
         <div class="row">
           <a href="<?php echo site_url('home'); ?>" class="card-link white-text active">BPRENER</a>
-            <div class="col-md-5 m-x-auto pull-xs-none">
+            <div class="col-md-6 col-sm-6 m-x-auto pull-xs-none">
 
                 <!--Panel-->
                 <div class="card card-block z-depth-5 white-text">
                   <a href="<?php echo site_url('login'); ?>" class="card-link black-text active">SING IN</a>
                   <a href="<?php echo site_url('register'); ?>" class="card-link black-text">SING UP</a>
                   <div id="messages"></div>
-                  <?php 
+                  <?php
                   $attributes = array('class' => 'form-horizontal', 'id' => 'loginform');
                   echo form_open('login/process', $attributes)?>
                     <div class="md-form m-t-3 form-group">
@@ -34,8 +34,8 @@
                     </div>
 
                     <div class="text-xs-center">
-                        <button type="submit" name="submit" class="btn btn-indigo">LOGIN</button>
-                        <h5><a href="#" class="white-text">Forgot password?</a></h5>
+                        <button type="submit" name="submit" class="btn btn-primary">LOGIN</button>
+                        <h5><a href="#" class="black-text">Forgot password?</a></h5>
                     </div>
                   <?php echo form_close(); ?>
 

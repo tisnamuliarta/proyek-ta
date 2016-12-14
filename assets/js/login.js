@@ -9,7 +9,7 @@ $(document).ready(function() {
       data: form.serialize(),
       dataType: 'json',
       success:function(response) {
- 
+
         if (response.success == true) {
           $('.text-danger').remove();
           $('.form-group').removeClass('has-error').removeClass('has-success');

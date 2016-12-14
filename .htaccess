@@ -1,11 +1,24 @@
-Options +FollowSymLinks
-RewriteEngine on
-RewriteBase /
 
-# -- Add this rule ---
-RewriteCond %{REQUEST_URI} ^/([a-zA-Z0-9_-]+)$
-RewriteRule ^(.*)$ index.php/member/show/$1 [L]
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # !IMPORTANT! Set your RewriteBase here and don't forget trailing and leading
+  #  slashes.
+  # If your page resides at
+  #  http://www.example.com/mypage/test1
+  # then use
+  # RewriteBase /mypage/test1/
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.php?/$1 [L]
+</IfModule>
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L]
+Options -Indexes
+
+<IfModule !mod_rewrite.c>
+  # If we don't have mod_rewrite installed, all 404's
+  # can be sent to index.php, and everything works as normal.
+  # Submitted by: ElliotHaughin
+
+  ErrorDocument 404 /index.php
+</IfModule>

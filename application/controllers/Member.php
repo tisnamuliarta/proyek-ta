@@ -13,7 +13,7 @@ class Member extends CI_Controller
 		$this->load->library(array('form_validation', 'Template','session'));
 	}
 
-	public function show($uname)
+	public function index($uname)
 	{
 		// $profile = $this->M_member->get_profile($uname);
 		// $data['full_name'] = $profile['full_name'];

@@ -11,11 +11,16 @@ class Auth_su extends CI_Controller
     $this->load->helper(array('form','url','html'));
     $this->load->library(array('session', 'form_validation'));
     $this->load->database();
-    $this->load->model('M_superuser');
-
+    $this->load->model('m_superuser');
     if ($this->session->userdata('login')) {
       redirect ('su/dashboard');
     }
+  }
+
+  public function addsuperuser()
+  {
+    $this->m_superuser->insertSu();
+    redirect('auth_su/login');
   }
 
   // public function process()
@@ -36,10 +41,13 @@ class Auth_su extends CI_Controller
       $this->load->view('admin/admin_content/login');
     }else
     {
-      $result = $this->M_superuser->getsu($username, $password);
-      if (count($result) > 0)
+      $login = $this->m_superuser->login();
+      if (count($login) > 0)
       {
-        $session_data = array('login' => TRUE, 'uname' =>$result[0]->username, 'uid' => $result[0] -> id);
+        $session_data = array(
+          'login' => TRUE,
+          'uname' =>$login[0]->username,
+          'uid' => $login[0] -> id);
         $this->session->set_userdata($session_data);
         redirect("su/dashboard");
       }else

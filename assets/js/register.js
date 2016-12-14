@@ -12,13 +12,13 @@ $(document).ready(function() {
  
         if (response.success == true) {
           $('#messages').html('<div class="alert alert-success alert-dismissible" role="alert">'+
-            '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-            '<strong>Warning!</strong>' + response.message+
+            '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+ response.messages+
           '</div>');
 
           $('#registerform')[0].reset();
           $('.text-danger').remove();
           $('.form-group').removeClass('has-error').removeClass('has-success');
+          window.location = response.messages;
         }else {
           $.each(response.messages, function(index, value) {
             var element = $('#'+index);

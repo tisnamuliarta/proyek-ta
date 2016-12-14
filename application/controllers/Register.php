@@ -15,7 +15,7 @@ class Register extends CI_Controller
     $this->load->library(array('form_validation','session'));
 
     if($this->session->userdata('id')){
-            redirect('/');
+      redirect('/');
     }
   }
 
@@ -37,7 +37,7 @@ class Register extends CI_Controller
       array(
         'field' => 'email',
         'label' => 'Your Email',
-        'rules' => 'required|valid_email'
+        'rules' => 'required|valid_email|is_unique[member.email]'
       ),
       array(
         'field' => 'username',
@@ -57,13 +57,13 @@ class Register extends CI_Controller
     );
 
     $this->form_validation->set_rules($validate_data);
-    $this->form_validation->set_message('is_unique', 'The {field} already axists' );
+    $this->form_validation->set_message('is_unique', 'The {field} is already axists' );
     $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
 
     if ($this->form_validation->run() === true) {
       $this->M_member->register();
       $validator['success'] = true;
-      $validator['messages'] = 'Successfull register';
+      $validator['messages'] = '/login';
       // redirect('register');
     }else {
       // redirect('register');
