@@ -19,6 +19,18 @@ class User extends CI_Controller
     $this->load->view('user/login');
   }
 
+  public function view($url)
+  {
+      $query =$this->db->query("SELECT * FROM member WHERE username ='{$url}' ");
+
+      if ($query->num_rows())
+      {
+          print ('Hello');
+      }else {
+          print ('user not found');
+      }
+  }
+
   public function register()
   {
     $validator = array('success' => false, 'messages' => array());

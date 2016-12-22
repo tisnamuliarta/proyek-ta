@@ -10,11 +10,10 @@
   </head>
   <body>
     <div class="view">
-
       <div class="container">
         <div class="row">
-          <a href="<?php echo site_url('home'); ?>" class="card-link white-text active">BPRENER</a>
-            <div class="col-md-5 m-x-auto pull-xs-none">
+          <a href="<?php echo site_url('/'); ?>" class="card-link white-text active">BPRENER</a>
+            <div class="col-md-5 m-x-auto pull-xs-none col-sm-12 col-xs-12 ">
 
                 <!--Panel-->
                 <div class="card card-block z-depth-5 ">
@@ -26,24 +25,29 @@
                     $attributes = array('class' => 'form-horizontal', 'id' => 'registerform');
                     echo form_open('register/process', $attributes)?>
                       <div class="md-form m-t-3 form-group">
-                          <input type="text" id="full-name" name="full-name" class="form-control">
-                          <label for="full-name" class="">Full Name</label>
+                        <label for="full-name" class="">Full Name</label>
+                        <input type="text" id="full-name" name="full-name" class="form-control">
+
                       </div>
-                      <div class="md-form m-t-3 form-group">
-                          <input type="email" id="email" name="email" class="form-control ">
-                          <label for="email" class="">Your Email</label>
+                      <div class="md-form form-group">
+                        <label for="email" class="">Your Email</label>
+                        <input type="email" id="email" name="email" class="form-control ">
+
                       </div>
-                      <div class="md-form m-t-3 form-group">
-                          <input type="text" id="username" name="username" class="form-control">
-                          <label for="username" class="">Username</label>
+                      <div class="md-form  form-group">
+                        <label for="username" class="">Username</label>
+                        <input type="text" id="username" name="username" class="form-control">
+
                       </div>
-                      <div class="md-form m-t-3 form-group">
-                          <input type="password" id="password" name="password" class="form-control ">
-                          <label for="password" class="">Password</label>
+                      <div class="md-form  form-group">
+                        <label for="password" class="">Password</label>
+                        <input type="password" id="password" name="password" class="form-control ">
+
                       </div>
-                      <div class="md-form m-t-3 form-group">
-                          <input type="password" id="repassword" name="repassword" class="form-control ">
-                          <label for="repassword" class="">Confirm Password</label>
+                      <div class="md-form  form-group">
+                        <label for="repassword" class="">Confirm Password</label>
+                        <input type="password" id="repassword" name="repassword" class="form-control ">
+
                       </div>
 
                       <div class="text-xs-center">

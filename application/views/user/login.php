@@ -13,7 +13,7 @@
 
       <div class="container">
         <div class="row">
-          <a href="<?php echo site_url('home'); ?>" class="card-link white-text active">BPRENER</a>
+          <a href="<?php echo site_url('/'); ?>" class="card-link white-text active">BPRENER</a>
             <div class="col-md-6 col-sm-6 m-x-auto pull-xs-none">
 
                 <!--Panel-->
@@ -25,12 +25,12 @@
                   $attributes = array('class' => 'form-horizontal', 'id' => 'loginform');
                   echo form_open('login/process', $attributes)?>
                     <div class="md-form m-t-3 form-group">
-                        <input type="text" id="username" name="username" class="form-control">
-                        <label for="form1" class="">Username</label>
+                      <label for="form1" class="">Username</label>
+                      <input type="text" id="username" name="username" class="form-control">
                     </div>
                     <div class="md-form form-group">
-                        <input type="password" id="password" name="password" class="form-control">
-                        <label for="password" class="">Password</label>
+                      <label for="password" class="">Password</label>
+                      <input type="password" id="password" name="password" class="form-control">
                     </div>
 
                     <div class="text-xs-center">

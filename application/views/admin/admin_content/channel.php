@@ -13,7 +13,8 @@
                   <th>Channel Name</th>
                   <th>Description</th>
                   <th>Date Created</th>
-                  <th>Status</th>
+                  <th>icon</th>
+                  <th>Action</th>
               </tr>
             </thead>
           </table>

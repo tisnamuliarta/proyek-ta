@@ -25,3 +25,10 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+.idea/
+application/controllers/Channel.php
+application/controllers/Data.php
+application/controllers/user/
+application/views/channel/
+application/views/data.php
+upload/channel/

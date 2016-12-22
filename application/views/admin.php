@@ -53,14 +53,14 @@
       					<?php
                   $attributes = array('class' => 'form-horizontal', 'id' => 'addChannelForm');
 
-                  echo form_open('su/create_channel', $attributes);
+                  echo form_open_multipart('su/create_channel', $attributes);
                 ?>
                   <div class="form-group ">
                     <label for="channel_name">Channel Name</label>
                     <div class="input-group mb-1">
                       <span class="input-group-addon"><i class="icon-people"></i>
                       </span>
-                      <input type="text" name="channel_name" value="<?php echo set_value('channel_name'); ?>" class="form-control" placeholder="Channel Name">
+                      <input type="text" name="channel_name" id="channel_name"  class="form-control" placeholder="Channel Name">
                     </div>
                   </div>
 
@@ -69,7 +69,7 @@
                     <div class="input-group mb-1">
                       <span class="input-group-addon"><i class="icon-layers"></i>
                       </span>
-                      <input type="text" name="channel_description" value="<?php echo set_value('channel_description'); ?>" class="form-control" placeholder="Channel description">
+                      <input type="text" name="channel_description" id="channel_description" value="<?php echo set_value('channel_description'); ?>" class="form-control" placeholder="Channel description">
                     </div>
                   </div>
 
@@ -78,7 +78,7 @@
                     <div class="input-group mb-1">
                       <span class="input-group-addon"><i class="icon-paper-clip"></i>
                       </span>
-                      <input type="file" name="channel_icon"  class="form-control" placeholder="Channel icon">
+                      <input type="file" name="channel_icon" id="channel_icon"  class="form-control" placeholder="Channel icon">
                     </div>
                   </div>
 

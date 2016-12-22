@@ -50,8 +50,9 @@ class Login extends CI_Controller
       if ($login) {
         $this->load->library('session');
         $newdata = array(
-          'id'  => $login['id'],
-          'username' => $login['username'],
+            'id'  => $login['id'],
+            'username' => $login['username'],
+            'avatar' => $login['avatar'],
           'logged_in' => TRUE
         );
 

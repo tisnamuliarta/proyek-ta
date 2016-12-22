@@ -1,0 +1,32 @@
+@media screen and (max-width : 550px) {
+    .brand {
+        left: 30%!important;
+    }
+}
+
+@media screen and (max-width : 900px) {
+    .brand {
+        top: 0;
+        left: 40%;
+    }
+}
+
+@media screen and (max-width : 990px) {
+    .brand {
+        top: 0;
+        left: 40%;
+    }
+    .navbar-desktop {
+        display: none;
+    }
+    .form-search {
+        display: none!important;
+    }
+
+    .navbar-mobile {
+        visibility: visible;
+    }
+    .btn-toggle {
+        visibility: visible;
+    }
+}

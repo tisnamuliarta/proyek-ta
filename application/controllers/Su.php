@@ -10,9 +10,9 @@ class Su extends CI_Controller
     parent::__construct();
     $this->load->library('Admin_template');
     $this->load->helper(array('form','url','html'));
-    $this->load->library(array('session', 'form_validation'));
+    $this->load->library(array('session', 'form_validation','image_lib'));
     $this->load->database();
-    $this->load->model('M_superuser');
+    $this->load->model(array('M_superuser','m_channel'));
 
     if (!$this->session->userdata('login')) {
       redirect ('auth_su/login');
@@ -41,31 +41,6 @@ class Su extends CI_Controller
     $this->admin_template->display('admin/admin_content/member_list', $data);
   }
 
-  public function fetch_member()
-  {
-    $this->load->model('M_member');
-    $fetch_data = $this->M_member->make_datatables();
-    $data = array();
-    foreach ($fetch_data as $row ) {
-      $sub_array = array();
-      $sub_array[] = '<img src="'.base_url().'upload/profiles/'.$row->avatar.'" class="img-responsive img-thumbnail" />';
-      $sub_array[] = $row->full_name;
-      $sub_array[] = $row->email;
-      $sub_array[] = $row->username;
-      $sub_array[] = $row->date_created;
-      $sub_array[] = '<button class="btn btn-danger btn-xs" type="button" name="delete" id="'.$row->id.'">Delete</button>';
-      $data[] = $sub_array;
-    }
-
-    $output = array(
-      "draw" => intval($_POST['draw']),
-      "recordsTotal" => $this->M_member->get_all_data(),
-      "recordsFiltered" => $this->M_member->get_filtered_data(),
-      "data" => $data
-    );
-
-    echo json_encode($output);
-  }
 
   /**
    * Channel management
@@ -77,54 +52,156 @@ class Su extends CI_Controller
     $this->admin_template->display('admin/admin_content/channel.php', $data);
   }
 
-  public function create_channel()
-  {
-    $this->load->model('M_channel');
-    $validator = array('success' => false, 'messages' => array());
-    $config = array(
-      array(
-        'field' => 'channel_name',
-        'label' => 'Channel Name',
-        'rules' => 'required'
-      ),
-      array(
-        'field' => 'channel_description',
-        'label' => 'Channel Description',
-        'rules' => 'required'
-      ),
-      array(
-        'field' => 'channel_icon',
-        'label' => 'Channel Icon',
-        'rules' => ''
-      )
-    );
+    /**
+     * create channel function
+     */
+    public function create_channel()
+    {
+        $this->load->model('M_channel');
+        $validator = array('success' => false, 'messages' => array());
+        $config = array(
+          array(
+            'field' => 'channel_name',
+            'label' => 'Channel Name',
+            'rules' => 'required'
+          ),
+          array(
+            'field' => 'channel_description',
+            'label' => 'Channel Description',
+            'rules' => 'required'
+          )
+        );
 
-    $this->input->is_ajax_request(true);
-    $this->form_validation->set_rules($config);
-    $this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
+        $this->input->is_ajax_request(true);
+        $this->form_validation->set_rules($config);
+        $this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 
-    if ($this->form_validation->run() === true) {
-      $create_channel = $this->M_channel->create();
+        if ($this->form_validation->run() === true) {
+            $this->load->helper('url');
+            $slug = url_title($this->input->post('channel_name', 'dash', true));
+            $data = array(
+                'name'        => $this->input->post('channel_name'),
+                'description' => $this->input->post('channel_description'),
+                'slug'        => $slug
+            );
+            $create_channel = $this->M_channel->create($data);
 
-      if ($create_channel === true) {
-        $validator['success'] = true;
-        $validator['messages'] = "Successfuly add data";
-      }else {
-        $validator['success'] = false;
-        $validator['messages'] = "Error while creating channel";
-      }
 
-    }else {
-      $validator['success'] = false;
-      foreach ($_POST as $key => $value) {
-        $validator['messages'][$key] = form_error($key);
-      }
+            if ($create_channel === true) {
+                $validator['success'] = true;
+                $validator['messages'] = "Successfuly add data";
+            }else {
+                $validator['success'] = false;
+                $validator['messages'] = "Error while creating channel";
+            }
+        }else {
+          $validator['success'] = false;
+          foreach ($_POST as $key => $value) {
+            $validator['messages'][$key] = form_error($key);
+          }
+        }
+
+        echo json_encode($validator);
     }
 
-    echo json_encode($validator);
+
+
+  public function upload_image()
+  {
+      if (isset($_FILES['channel_icon']['name'])) {
+          $config['upload_path'] = './upload/channel/';
+          $config['allowed_types'] = 'jpeg|png|jpg|gif';
+          $config['encrypt_name'] = TRUE;
+          $this->load->library('upload', $config);
+          $this->upload->initialize($config);
+          if (!$this->upload->do_upload('channel_icon')) {
+              echo $this->upload->display_errors();
+          }else {
+              $data = $this->upload->data();
+              $config['image_library'] = 'gd2';
+              $config['source_image'] = './upload/channel/'.$data['file_name'];
+              $config['create_thumb'] = FALSE;
+              $config['maintain_ration'] = FALSE;
+              $config['quality'] = '60%';
+              $config['width'] = 460;
+              $config['height'] = 460;
+              $config['new_image'] = './upload/channel/'.$data['file_name'];
+              $this->load->library('image_lib', $config);
+              $this->image_lib->resize();
+              $image_data = array(
+                  'icon' => $data['file_name']
+              );
+          }
+      }
   }
 
-  /**
+
+    public function fetch_member()
+    {
+        $this->load->model('M_member');
+        $result = array('data' => array());
+        $data = $this->M_member->fetch_data_member();
+        foreach ($data as $key =>  $value) {
+            $avatar = '<img class="img-responsive img-avatar" height="60px" width="60px" src=" '.base_url().'profile/'.$value['avatar'].'" >';
+            $button =
+                '<div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Action <span class="carret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="btn btn-success" type="button" onclick="editChannel('.$value['id'].')" >Grant As Admin</a></li>
+                        <li><a class="btn btn-success" type="button" onclick="editChannel('.$value['id'].')" >Grant As Member</a></li>
+                        <li><a class="btn btn-danger" type="button" onclick="deleteChannel('.$value['id'].')" >Delete</a></li>
+                    </ul>
+                </div>';
+            $result['data'][$key] = array(
+                $avatar,
+                $value['full_name'],
+                $value['email'],
+                $value['username'],
+                $value['date_created'],
+                $value['role'],
+                $button
+            );
+        }
+
+        echo json_encode($result);
+    }
+
+    /**
+     * fetch channel data
+     */
+    public static function fetch_channel()
+    {
+        $result = array('data' => array());
+
+        $data = $this->m_channel->fetch_data_channel();
+        foreach ($data as $key => $value) {
+            $button =
+                '<div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Action <span class="carret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="btn btn-success" type="button" onclick="editChannel('.$value['id'].')" >Edit</a></li>
+                        <li><a class="btn btn-danger" type="button" onclick="deleteChannel('.$value['id'].')" >Delete</a></li>
+                    </ul>
+                </div>';
+            $icon = '<img class="img-responsive img-avatar" height="60px" width="60px" src=" '.base_url().'upload/channel/'.$value['icon'].'" >';
+            $name = '<a target="_blank" href="'.site_url().'channel/show/'.$value["slug"].'" >'.$value["name"].'</a>';
+            $result['data'][$key] = array(
+                $name,
+                $value['description'],
+                $value['date_created'],
+                $icon,
+                $button
+            );
+        }
+
+        echo json_encode($result);
+    }
+
+    /**
    * [logout description]
    * @return [type] [description]
    */

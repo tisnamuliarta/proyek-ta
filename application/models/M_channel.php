@@ -9,24 +9,49 @@ class M_channel extends CI_Model
   function __construct()
   {
     parent::__construct();
+    $this->load->database();
   }
 
-  public function create()
+  public function getChannel()
   {
-    $this->load->helper('url');
-    $slug = url_title($this->input->post('channel_name', 'dash', true));
-    $data = array(
-      'name'        => $this->input->post('channel_name'),
-      'description' => $this->input->post('channel_description'),
-      'slug'        => $slug
-    );
+    return $this->db->get($this->table);
+  }
 
-    $query = $this->db->insert($this->table, $data);
-
-    if ($query == true) {
-      return true;
+  public function getChannelDetail($slug)
+  {
+    $query = $this->db->get_where($this->table, array('slug' => $slug));
+    if ($query->num_rows()) {
+      return $query->row_array();
     }else {
-      return false;
+      show(404);
+      exit;
     }
   }
+
+
+    /**
+     * create new channel
+     * @return bool
+     */
+    public function create($data)
+  {
+      $query = $this->db->insert($this->table, $data);
+
+      if ($query == true) {
+          return true;
+      }else {
+          return false;
+      }
+  }
+
+    /**
+     * @return string
+     */
+    public function fetch_data_channel()
+    {
+        $sql = "SELECT * FROM channel";
+        $query = $this->db->query($sql);
+
+        return $query->result_array();
+    }
 }

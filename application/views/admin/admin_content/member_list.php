@@ -13,6 +13,8 @@
               <th>Email</th>
               <th>Username</th>
               <th>Date registered</th>
+                <th>Role</th>
+                <th>Action</th>
             </tr>
           </thead>
 
